@@ -31,15 +31,10 @@ u64 nextPrime(u64 n)
 
 int main()
 {
-	int limit = 2e6;
+	const int limit = 2e6; 
 	u64 sum = 0;
-
-	u64 prime = nextPrime(0);
-	while (prime < limit)
-	{
+	for (u64 prime = nextPrime(0); prime < limit; prime = nextPrime(prime))
 		sum += prime;
-		prime = nextPrime(prime);
-	}
 	cout << sum << endl;
 
 	return 0;

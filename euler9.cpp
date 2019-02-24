@@ -9,23 +9,20 @@
 // Find the product abc.
 
 #include <iostream>
-#include <cmath>
 using namespace std;
 
-int main(){
-	
+int main()
+{
 	int n = 1000;
-
 	for (int a = 1; a < n/2; ++a)
 	{
 		for (int b = a+1; b <n/2; ++b)
 		{
-			double c = a*a + b*b;
-			c = sqrt(c);
-			if (c > n - (a+b))
-				break;
-			if (a + b + c == n)
-				cout << a << " * " << b << " * " << c  << " = " << (int)(a*b*c) << endl;
+			int c = n - a - b;
+			if ((a * a + b * b) != (c * c))
+				continue;
+			cout << a << " + " << b << " + " << c  << " = " << a + b + c << endl;
+			cout << a << " * " << b << " * " << c  << " = " << a * b * c << endl;
 		}
 	}
 
