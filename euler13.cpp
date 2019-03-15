@@ -125,8 +125,9 @@ void add(const std::vector<int>& additor, std::vector<int>& sum)
 	if (itAdd != additor.rend())
 		while (itAdd != additor.rend())
 		{
-			sum.emplace(sum.begin(), (*itAdd + added)%10);
-			added = (*itAdd + added) / 10;
+			int temp = *itAdd + added;
+			sum.emplace(sum.begin(), temp % 10);
+			added = temp / 10;
 			++itAdd;
 		}
 

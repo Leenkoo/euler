@@ -23,6 +23,19 @@
 #include <cmath>
 
 using namespace std;
+int divisors(int n)
+{
+	int count = 0;
+
+	for (int i = 1; i * i <= n; ++i)
+		if (n % i != 0)
+			continue;
+		else if (i * i == n)
+			count += 1;
+		else
+			count += 2;
+	return count;
+}
 
 int main()
 {
@@ -32,21 +45,10 @@ int main()
 	for (int i = 1; ; ++i)
 	{
 		triangleNumber += i;
-		int numOfDivisors = 0;
-		int root = sqrt(triangleNumber);
-
-		for (int div = 1; div <= root; ++div)
-			if (triangleNumber % div == 0)
-				numOfDivisors+= 2;
-
-		if (root * root == triangleNumber)
-			--numOfDivisors;
-
-		if (numOfDivisors > n)
+		int d = divisors(triangleNumber);
+		if (d > n)
 			break;
 	}
-
 	cout << triangleNumber << endl;
-
 	return 0;
 }
